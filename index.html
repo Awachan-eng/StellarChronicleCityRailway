@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080e20">
+  <title>星都電鉄 - Stellar City Railway</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div id="game">
+    <header class="site-header">
+      <button class="brand" id="home-button" aria-label="ホームへ戻る">
+        <span class="brand-mark">✦</span>
+        <span class="brand-text">
+          <strong>星都電鉄</strong>
+          <small>STELLAR CITY RAILWAY</small>
+        </span>
+      </button>
+      <span class="version">BUILD 0.1</span>
+    </header>
+
+    <main id="main-content">
+
+      <section class="screen active" id="home-screen">
+        <div class="hero">
+          <p class="eyebrow">WELCOME TO STELLAR CITY</p>
+          <h1>星都電鉄</h1>
+          <p class="english-title">STELLAR CITY RAILWAY</p>
+          <p class="intro">
+            星々をつなぐ、鉄道の旅へ。<br>
+            星都の街を駆け抜ける列車の運転士になろう。
+          </p>
+        </div>
+
+        <nav class="main-menu" aria-label="メインメニュー">
+          <button class="menu-button primary" data-screen="route-select-screen">
+            <span class="menu-icon">🚆</span>
+            <span class="menu-label">
+              <strong>運転を始める</strong>
+              <small>路線・列車を選択</small>
+            </span>
+          </button>
+
+          <button class="menu-button" data-screen="map-screen">
+              <small>路線と駅を確認</small>
+            </span>
+          </button>
+
+          <button class="menu-button" data-screen="vehicle-screen">
+            <span class="menu-icon">🚄</span>
+            <span class="menu-label">
+              <strong>車両図鑑</strong>
+              <small>星都電鉄の車両を紹介</small>
+            </span>
+          </button>
+
+          <button class="menu-button" data-screen="settings-screen">
+            <span class="menu-icon">⚙️</span>
+            <span class="menu-label">
+              <strong>設定</strong>
+              <small>音量・運転画面など</small>
+            </span>
+          </button>
+        </nav>
+      </section>
+
+      <section class="screen" id="route-select-screen">
+        <div class="page-heading">
+          <p class="eyebrow">START YOUR JOURNEY</p>
+          <h2>運転する路線を選択</h2>
+          <p>この画面は準備中です。</p>
+        </div>
+        <button class="back-button" data-screen="home-screen">ホームへ戻る</button>
+      </section>
+
+      <section class="screen" id="map-screen">
+        <div class="page-heading">
+          <p class="eyebrow">NETWORK GUIDE</p>
+          <h2>星都電鉄 路線図</h2>
+          <p>この画面は準備中です。</p>
+        </div>
+        <button class="back-button" data-screen="home-screen">ホームへ戻る</button>
+      </section>
+
+      <section class="screen" id="vehicle-screen">
+        <div class="page-heading">
+          <p class="eyebrow">ROLLING STOCK</p>
+          <h2>車両図鑑</h2>
+          <p>この画面は準備中です。</p>
+        </div>
+        <button class="back-button" data-screen="home-screen">ホームへ戻る</button>
+      </section>
+
+      <section class="screen" id="settings-screen">
+        <div class="page-heading">
+          <p class="eyebrow">GAME SETTINGS</p>
+          <h2>設定</h2>
+          <p>この画面は準備中です。</p>
+        </div>
+        <button class="back-button" data-screen="home-screen">ホームへ戻る</button>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
