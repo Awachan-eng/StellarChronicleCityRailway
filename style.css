@@ -44,6 +44,118 @@ button {
 
 .brand {
   display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.brand-mark {
+  color: var(--accent);
+  font-size: 30px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.brand-text strong {
+  font-size: 19px;
+  letter-spacing: 0.12em;
+}
+
+.brand-text small {
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+
+.version {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+#main-content {
+  width: min(100% - 32px, 1000px);
+  flex: 1;
+  margin: 0 auto;
+  padding: 30px 0 40px;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.hero {
+  text-align: center;
+  padding: 25px 15px 20px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  margin-bottom: 15px;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 8vw, 64px);
+  letter-spacing: 0.16em;
+}
+
+.english-title {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  margin-top: 8px;
+}
+
+.intro {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+}
+
+.main-menu {
+  width: min(100%, 560px);
+  margin: 28px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.menu-button {
+  min-height: 90px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--panel);
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu-button.primary {
+  border-color: rgba(131, 223, 255, 0.55);
+  background: linear-gradient(135deg, #17466b, #18365b);
+}
+
+.menu-icon {
+  font-size: 26px;
+}
+
 .menu-label {
   flex: 1;
   display: flex;
@@ -84,7 +196,111 @@ button {
   cursor: pointer;
 }
 
-@media (max-width: 360px) {
+@media (orientation: portrait) {
+  body::after {
+    content: "⟳\A端末を横向きにしてください\A\Aこのゲームは横画面に最適化されています。";
+    white-space: pre-line;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 25px;
+    background:
+      radial-gradient(ellipse at 50% 35%, #1b3158 0%, transparent 60%),
+      linear-gradient(145deg, #080e20, #101a35 55%, #080d1d);
+    color: var(--text);
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 2.2;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .site-header {
+    min-height: 56px;
+    padding: 8px 4%;
+  }
+
+  .brand-mark {
+    font-size: 26px;
+  }
+
+  .brand-text strong {
+    font-size: 16px;
+  }
+
+  #main-content {
+    padding-top: 14px;
+    padding-bottom: 18px;
+  }
+
+  #home-screen.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .hero {
+    padding: 8px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 6vw, 50px);
+  }
+
+  .eyebrow {
+    margin-bottom: 8px;
+    font-size: 9px;
+  }
+
+  .intro {
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
+  .main-menu {
+    width: 100%;
+    margin: 0;
+    gap: 10px;
+  }
+
+  .menu-button {
+    min-height: 72px;
+    padding: 10px;
+  }
+
+  .menu-icon {
+    font-size: 21px;
+  }
+
+  .menu-label {
+    gap: 4px;
+  }
+
+  .menu-label strong {
+    font-size: 12px;
+  }
+
+  .menu-label small {
+    font-size: 9px;
+  }
+
+  .page-heading {
+    margin-bottom: 14px;
+  }
+
+  .page-heading h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 360px) and (orientation: landscape) {
   .main-menu {
     grid-template-columns: 1fr;
   }
