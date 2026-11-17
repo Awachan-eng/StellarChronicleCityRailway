@@ -1,0 +1,91 @@
+:root {
+  --text: #f5f8ff;
+  --muted: #aab8d4;
+  --accent: #83dfff;
+  --border: rgba(164, 203, 255, 0.2);
+  --panel: rgba(20, 34, 65, 0.88);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 30%, #1b3158 0%, transparent 55%),
+    linear-gradient(145deg, #080e20, #101a35 55%, #080d1d);
+  color: var(--text);
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+#game {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  min-height: 70px;
+  padding: 12px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  background: rgba(5, 12, 28, 0.55);
+}
+
+.brand {
+  display: flex;
+.menu-label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu-label strong {
+  font-size: 14px;
+}
+
+.menu-label small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.page-heading {
+  margin-bottom: 22px;
+}
+
+.page-heading h2 {
+  font-size: clamp(24px, 5vw, 32px);
+  letter-spacing: 0.08em;
+}
+
+.page-heading p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 10px 22px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  cursor: pointer;
+}
+
+@media (max-width: 360px) {
+  .main-menu {
+    grid-template-columns: 1fr;
+  }
+}
