@@ -22,4 +22,23 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("home-button").addEventListener("click", () => {
     showScreen("home-screen");
   });
+
+  const routeCards = document.querySelectorAll("[data-route]");
+  const resultArea = document.getElementById("route-selection-result");
+  const selectedRouteName = document.getElementById("selected-route-name");
+
+  let selectedRoute = "";
+
+  routeCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      selectedRoute = card.dataset.route;
+
+      routeCards.forEach((item) => {
+        item.classList.toggle("selected", item === card);
+      });
+
+      selectedRouteName.textContent = selectedRoute + "を選択中";
+      resultArea.hidden = false;
+    });
+  });
 });
