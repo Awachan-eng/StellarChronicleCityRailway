@@ -597,6 +597,12 @@ button {
   height: 324px;
   max-height: calc(100vh - 150px);
   min-height: 210px;
+  touch-action: none;
+  cursor: grab;
+}
+
+.controller-track:active {
+  cursor: grabbing;
 }
 
 .controller-track-inner {
