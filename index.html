@@ -19,7 +19,7 @@
           <small>STELLAR CITY RAILWAY</small>
         </span>
       </button>
-      <span class="version">BUILD 0.4</span>
+      <span class="version">BUILD 0.5</span>
     </header>
 
     <main id="main-content">
@@ -225,7 +225,18 @@
 
           <div class="controller-readout" id="controller-readout">N</div>
 
-          <div class="controller-track" id="controller-track">
+          <div
+            class="controller-track"
+            id="controller-track"
+            role="slider"
+            tabindex="0"
+            aria-label="マスコン"
+            aria-orientation="vertical"
+            aria-valuemin="0"
+            aria-valuemax="12"
+            aria-valuenow="7"
+            aria-valuetext="N"
+          >
             <div class="controller-track-inner" id="controller-track-inner">
               <div class="controller-rail"></div>
 
@@ -253,7 +264,7 @@
         </div>
 
         <div class="driving-message" id="driving-message">
-          運転画面の外枠ができました。マスコンの操作は次のステップで作ります。
+          レバーをスライドしてマスコンを操作できます。列車の走行は次のステップで作ります。
         </div>
       </section>
 
