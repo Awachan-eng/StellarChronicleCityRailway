@@ -98,8 +98,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
     drivingRouteName.textContent = `${selectedRoute} ／ ${selectedVehicle.name}`;
     drivingMaxSpeed.textContent = `${selectedVehicle.maxSpeed} km/h`;
+    updateController(7);
     showScreen("driving-screen");
   });
+
+  const notches = [
+    "P7", "P6", "P5", "P4", "P3", "P2", "P1",
+    "N",
+    "B1", "B2", "B3", "B4", "B5"
+  ];
+
+  const controllerTrack = document.getElementById("controller-track");
+  const controllerInner = document.getElementById("controller-track-inner");
+  const controllerThumb = document.getElementById("controller-thumb");
+  const controllerReadout = document.getElementById("controller-readout");
+  const controllerLabels = document.querySelectorAll(".notch-label");
+  const drivingMessage = document.getElementById("driving-message");
+
+  let currentNotchIndex = 7;
+  let isDragging = false;
+
+  function getNotchDescription(notchName) {
+    if (notchName.startsWith("P")) return "力行・加速";
+    if (notchName === "N") return "惰行";
+    return "ブレーキ";
+  }
+
+  function updateController(index) {
+    currentNotchIndex = Math.max(0, Math.min(12, index));
+
+    const notchName = notches[currentNotchIndex];
+
+    controllerThumb.style.top = `${(currentNotchIndex / 12) * 100}%`;
+    controllerReadout.textContent = notchName;
+
+    controllerLabels.forEach((label) => {
+      label.classList.toggle(
+        "selected",
+        Number(label.dataset.index) === currentNotchIndex
+      );
+    });
+
+    controllerTrack.setAttribute("aria-valuenow", currentNotchIndex);
+    controllerTrack.setAttribute("aria-valuetext", notchName);
+
+    drivingMessage.textContent =
+      `マスコン：${notchName}　／　${getNotchDescription(notchName)}`;
+  }
+
+  function setNotchFromPointer(event) {
+    const rect = controllerInner.getBoundingClientRect();
+
+    let ratio = (event.clientY - rect.top) / rect.height;
+    ratio = Math.max(0, Math.min(1, ratio));
+
+    updateController(Math.round(ratio * 12));
+  }
+
+  controllerTrack.addEventListener("pointerdown", (event) => {
+    isDragging = true;
+    controllerTrack.setPointerCapture(event.pointerId);
+    setNotchFromPointer(event);
+  });
+
+  controllerTrack.addEventListener("pointermove", (event) => {
+    if (!isDragging) return;
+    setNotchFromPointer(event);
+  });
+
+  controllerTrack.addEventListener("pointerup", () => {
+    isDragging = false;
+  });
+
+  controllerTrack.addEventListener("pointercancel", () => {
+    isDragging = false;
+  });
+
+  controllerTrack.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      updateController(currentNotchIndex - 1);
+    }
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      updateController(currentNotchIndex + 1);
+    }
+
+    if (event.key === "Home") {
+      event.preventDefault();
+      updateController(0);
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      updateController(12);
+    }
+  });
+
+  updateController(7);
 
   document.getElementById("exit-driving-button").addEventListener("click", () => {
     showScreen("route-select-screen");
