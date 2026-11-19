@@ -19,7 +19,7 @@
           <small>STELLAR CITY RAILWAY</small>
         </span>
       </button>
-      <span class="version">BUILD 0.2</span>
+      <span class="version">BUILD 0.4</span>
     </header>
 
     <main id="main-content">
@@ -101,7 +101,33 @@
 
         <div class="selection-result" id="route-selection-result" hidden>
           <h3 id="selected-route-name"></h3>
-          <p>この路線を選びました。次のステップで車両の選択を作ります。</p>
+          <p class="vehicle-heading">運転する車両を選択</p>
+
+          <div class="vehicle-select-list">
+            <button class="vehicle-select-card" data-vehicle="1000">
+              <strong>1000系</strong>
+              <small>普通</small>
+              <span class="vehicle-select-speed">80 km/h</span>
+            </button>
+
+            <button class="vehicle-select-card" data-vehicle="2000">
+              <strong>2000系</strong>
+              <small>急行</small>
+              <span class="vehicle-select-speed">100 km/h</span>
+            </button>
+
+            <button class="vehicle-select-card" data-vehicle="7000">
+              <strong>7000系</strong>
+              <small>観光特急</small>
+              <span class="vehicle-select-speed">120 km/h</span>
+            </button>
+          </div>
+
+          <p class="vehicle-select-detail" id="vehicle-select-detail">車両を選択してください。</p>
+
+          <button class="menu-button primary start-button" id="start-driving-button" disabled>
+            🚆 この路線で運転する
+          </button>
         </div>
 
         <button class="back-button" data-screen="home-screen">ホームへ戻る</button>
@@ -132,6 +158,103 @@
           <p>この画面は準備中です。</p>
         </div>
         <button class="back-button" data-screen="home-screen">ホームへ戻る</button>
+      </section>
+
+      <section class="screen" id="driving-screen">
+        <div class="driving-main">
+          <div class="driving-topbar">
+            <div>
+              <strong id="driving-route-name">運転画面</strong>
+              <span>　運転準備中</span>
+            </div>
+            <button class="driving-exit" id="exit-driving-button">終了</button>
+          </div>
+
+          <div class="forward-window">
+            <div class="sky-cloud"></div>
+            <div class="distant-buildings"></div>
+            <div class="railway-ground"></div>
+            <div class="railway-track"></div>
+            <div class="rail-left"></div>
+            <div class="rail-right"></div>
+            <div class="driving-placeholder">前方風景（開発中）</div>
+          </div>
+
+          <div class="driving-status">
+            <div class="status-box">
+              <small>運転区間</small>
+              <strong id="driving-section">始発駅</strong>
+            </div>
+            <div class="status-box">
+              <small>次の駅</small>
+              <strong id="next-station">未設定</strong>
+            </div>
+            <div class="status-box">
+              <small>車両最高速度</small>
+              <strong id="driving-max-speed">80 km/h</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="instrument-panel">
+          <h3>運転計器</h3>
+
+          <div class="speed-display">
+            <strong id="speed-value">0</strong>
+            <small>km/h</small>
+          </div>
+
+          <div class="instrument-info">
+            <div>
+              <small>現在速度</small>
+              <strong>停車中</strong>
+            </div>
+            <div>
+              <small>列車状態</small>
+              <strong>準備中</strong>
+            </div>
+            <div>
+              <small>信号</small>
+              <strong class="signal-stop">停止</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="master-controller">
+          <h3>マスコン</h3>
+
+          <div class="controller-readout" id="controller-readout">N</div>
+
+          <div class="controller-track" id="controller-track">
+            <div class="controller-track-inner" id="controller-track-inner">
+              <div class="controller-rail"></div>
+
+              <div class="controller-labels" id="controller-labels">
+                <span class="notch-label" data-index="0">P7</span>
+                <span class="notch-label" data-index="1">P6</span>
+                <span class="notch-label" data-index="2">P5</span>
+                <span class="notch-label" data-index="3">P4</span>
+                <span class="notch-label" data-index="4">P3</span>
+                <span class="notch-label" data-index="5">P2</span>
+                <span class="notch-label" data-index="6">P1</span>
+                <span class="notch-label selected" data-index="7">N</span>
+                <span class="notch-label brake-label" data-index="8">B1</span>
+                <span class="notch-label brake-label" data-index="9">B2</span>
+                <span class="notch-label brake-label" data-index="10">B3</span>
+                <span class="notch-label brake-label" data-index="11">B4</span>
+                <span class="notch-label brake-label" data-index="12">B5</span>
+              </div>
+
+              <div class="controller-thumb" id="controller-thumb"></div>
+            </div>
+          </div>
+
+          <div class="controller-current-caption">上：力行 ／ 下：ブレーキ</div>
+        </div>
+
+        <div class="driving-message" id="driving-message">
+          運転画面の外枠ができました。マスコンの操作は次のステップで作ります。
+        </div>
       </section>
 
     </main>
